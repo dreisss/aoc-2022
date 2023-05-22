@@ -1,4 +1,5 @@
 #!/bin/env ruby
+# frozen_string_literal: true
 
 input = File.read('./input.txt')
 
@@ -10,10 +11,10 @@ def format_input(input)
   end
 end
 
-# @param {Integer[][]} formatted_input
+# @param {Integer[][]} elves
 # @return {Integer}
-def solution(formatted_input)
-  formatted_input.map(&:sum).max
+def solution(elves)
+  elves.map(&:sum).max
 end
 
 print solution(format_input(input))

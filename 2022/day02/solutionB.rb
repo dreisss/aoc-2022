@@ -1,10 +1,12 @@
 #!/bin/env ruby
+# frozen_string_literal: true
 
-SCORES = ['A', 'B', 'C']
-WINS = ['A B', 'C A', 'B C']
-DRAWS = ['A A', 'B B', 'C C']
-TO_LOSE = ['C', 'A', 'B']
-TO_WIN = ['B', 'C', 'A']
+SCORES = %w[A B C].freeze
+CASES = %w[X Y Z].freeze
+WINS = ['A B', 'C A', 'B C'].freeze
+DRAWS = ['A A', 'B B', 'C C'].freeze
+TO_LOSE = %w[C A B].freeze
+TO_WIN = %w[B C A].freeze
 
 input = File.read('./input.txt')
 
@@ -14,18 +16,12 @@ def format_input(input)
   input.split("\n")
 end
 
-# @param {Array(String)} formatted_input
+# @param {Array(String)} rounds
 # @return {Integer}
-def solution(formatted_input)
-  formatted_input.map do |round|
-    if round[2] == 'X'
-      round[2] = TO_LOSE[SCORES.index round[0]]
-    elsif round[2] == 'Y'
-      round[2] = round[0]
-    elsif round[2] == 'Z'
-      round[2] = TO_WIN[SCORES.index round[0]]
-    end
-    
+def solution(rounds)
+  rounds.map do |round|
+    cases = [TO_LOSE[SCORES.index round[0]], round[0], TO_WIN[SCORES.index round[0]]]
+    round[2] = cases[CASES.index round[2]]
     score = 1 + SCORES.index(round[2])
 
     if WINS.include? round
@@ -33,7 +29,7 @@ def solution(formatted_input)
     elsif DRAWS.include? round
       score += 3
     end
-    
+
     score
   end.sum
 end

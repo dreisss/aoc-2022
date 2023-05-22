@@ -1,8 +1,9 @@
 #!/bin/env ruby
+# frozen_string_literal: true
 
-SCORES = ['X', 'Y', 'Z']
-WINS = ['A Y', 'C X', 'B Z']
-DRAWS = ['A X', 'B Y', 'C Z']
+SCORES = %w[X Y Z].freeze
+WINS = ['A Y', 'C X', 'B Z'].freeze
+DRAWS = ['A X', 'B Y', 'C Z'].freeze
 
 input = File.read('./input.txt')
 
@@ -12,10 +13,10 @@ def format_input(input)
   input.split("\n")
 end
 
-# @param {Array(String)} formatted_input
+# @param {Array(String)} rounds
 # @return {Integer}
-def solution(formatted_input)
-  formatted_input.map do |round|
+def solution(rounds)
+  rounds.map do |round|
     score = 1 + SCORES.index(round[2])
 
     if WINS.include? round
@@ -23,7 +24,7 @@ def solution(formatted_input)
     elsif DRAWS.include? round
       score += 3
     end
-    
+
     score
   end.sum
 end
