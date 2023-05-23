@@ -3,7 +3,7 @@
 
 require 'set'
 
-input = File.read('./input.txt')
+input = File.read('../input.txt')
 
 # @param {String} input
 # @return {Array(String)}
