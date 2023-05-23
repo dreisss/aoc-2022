@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # frozen_string_literal: true
 
-input = File.read('./input.txt')
+input = File.read('../input.txt')
 
 # @param {String} input
 # @return {Integer[][]}

@@ -1,14 +1,11 @@
 #!/bin/env ruby
 # frozen_string_literal: true
 
-SCORES = %w[A B C].freeze
-CASES = %w[X Y Z].freeze
-WINS = ['A B', 'C A', 'B C'].freeze
-DRAWS = ['A A', 'B B', 'C C'].freeze
-TO_LOSE = %w[C A B].freeze
-TO_WIN = %w[B C A].freeze
+SCORES = %w[X Y Z].freeze
+WINS = ['A Y', 'C X', 'B Z'].freeze
+DRAWS = ['A X', 'B Y', 'C Z'].freeze
 
-input = File.read('./input.txt')
+input = File.read('../input.txt')
 
 # @param {String} input
 # @return {Array(String)}
@@ -20,8 +17,6 @@ end
 # @return {Integer}
 def solution(rounds)
   rounds.map do |round|
-    cases = [TO_LOSE[SCORES.index round[0]], round[0], TO_WIN[SCORES.index round[0]]]
-    round[2] = cases[CASES.index round[2]]
     score = 1 + SCORES.index(round[2])
 
     if WINS.include? round
