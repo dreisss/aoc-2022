@@ -12,14 +12,14 @@ input = File.read('../input.txt')
 
 # @param {String} input
 # @return {Array(String)}
-def format_input(input)
+def format(input)
   input.split("\n")
 end
 
 # @param {Array(String)} rounds
 # @return {Integer}
 def solution(rounds)
-  rounds.map do |round|
+  rounds.map! do |round|
     cases = [TO_LOSE[SCORES.index round[0]], round[0], TO_WIN[SCORES.index round[0]]]
     round[2] = cases[CASES.index round[2]]
     score = 1 + SCORES.index(round[2])
@@ -34,4 +34,4 @@ def solution(rounds)
   end.sum
 end
 
-print solution(format_input(input))
+print solution(format(input))

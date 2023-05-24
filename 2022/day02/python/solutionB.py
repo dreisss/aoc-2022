@@ -9,13 +9,11 @@ TO_WIN = ['B', 'C', 'A']
 
 input = open('../input.txt').read()
 
-def format_input(input: str) -> 'list[str]':
+def format(input: str) -> list[str]:
     return input.split('\n')
 
-def solution(rounds: 'list[str]') -> int:
-    result = []
-
-    for round in rounds:
+def solution(rounds: list[str]) -> int:
+    def _map(round):
         [opponent, _, player] = round
         cases = [TO_LOSE[SCORES.index(opponent)], opponent, TO_WIN[SCORES.index(opponent)]]
         player = cases[CASES.index(player)]
@@ -28,8 +26,8 @@ def solution(rounds: 'list[str]') -> int:
         elif round in DRAWS:
             score += 3
 
-        result.append(score)
+        return score
         
-    return sum(result)
+    return sum(map(_map, rounds))
 
-print(solution(format_input(input)))
+print(solution(format(input)))

@@ -7,14 +7,14 @@ input = File.read('../input.txt')
 
 # @param {String} input
 # @return {Array(String)}
-def format_input(input)
+def format(input)
   input.split
 end
 
 # @param {Array(String)} rucksacks
 # @return {Integer}
 def solution(rucksacks)
-  rucksacks.map do |rucksack|
+  rucksacks.map! do |rucksack|
     first = rucksack[...rucksack.length / 2].chars.to_set
     second = rucksack[rucksack.length / 2..].chars.to_set
     item = first.intersection(second).first
@@ -22,4 +22,4 @@ def solution(rucksacks)
   end.sum
 end
 
-print solution(format_input(input))
+print solution(format(input))

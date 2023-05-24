@@ -2,10 +2,10 @@
 
 input = open('../input.txt').read()
 
-def format_input(input: str) -> 'list[str]':
+def format(input: str) -> list[str]:
     return input.split()
 
-def solution(rucksacks:'list[str]') -> int:
+def solution(rucksacks:list[str]) -> int:
     priorities = []
     
     for i in range(0, len(rucksacks) - 1, 3):
@@ -17,4 +17,4 @@ def solution(rucksacks:'list[str]') -> int:
     
     return sum(priorities)
 
-print(solution(format_input(input)))
+print(solution(format(input)))

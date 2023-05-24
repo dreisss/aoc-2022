@@ -7,10 +7,10 @@ input = File.read('../input.txt')
 
 # @param {String} input
 # @return {Integer[][][]}
-def format_input(input)
-  input.split.map do |sections|
-    sections.split(',').map do |pair|
-      pair.split('-').map(&:to_i)
+def format(input)
+  input.split.map! do |sections|
+    sections.split(',').map! do |pair|
+      pair.split('-').map!(&:to_i)
     end
   end
 end
@@ -18,11 +18,11 @@ end
 # @param {Integer[][][]} sections
 # @return {Integer}
 def solution(sections)
-  sections.filter do |section|
+  sections.filter! do |section|
     first = (section.first[0]..section.first[1])
     second = (section.last[0]..section.last[1])
-    !first.to_set.&(second.to_set).empty?
+    first.to_set.disjoint?(second.to_set)
   end.length
 end
 
-print solution(format_input(input))
+print solution(format(input))

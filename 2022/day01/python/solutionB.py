@@ -2,25 +2,10 @@
 
 input = open('../input.txt').read()
 
-def format_input(input: str) -> 'list[list[int]]':
-    result = []
-    
-    for numbers in input.split('\n\n'):
-        numbers_int = []
-        
-        for number in numbers.split('\n'):
-            numbers_int.append(int(number))
-        
-        result.append(numbers_int)        
-    
-    return result
+def format(input: str) -> 'map[map[int]]':
+    return map(lambda n: map(int, n.split('\n')), input.split('\n\n'))
 
-def solution(elves: 'list[list[int]]') -> int:
-    sums = []
-    
-    for elf in elves:
-        sums.append(sum(elf))
-        
-    return sum(sorted(sums)[-3:])
+def solution(elves: 'map[map[int]]') -> int:
+    return sum(sorted(map(sum, elves))[-3:])
 
-print(solution(format_input(input)))
+print(solution(format(input)))

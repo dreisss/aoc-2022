@@ -7,7 +7,7 @@ input = File.read('../input.txt')
 
 # @param {String} input
 # @return {Array(String)}
-def format_input(input)
+def format(input)
   input.split
 end
 
@@ -25,4 +25,4 @@ def solution(rucksacks)
   priorities.sum
 end
 
-print solution(format_input(input))
+print solution(format(input))
