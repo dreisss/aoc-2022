@@ -3,18 +3,12 @@
 
 require 'set'
 
-input = File.read('../input.txt')
+input = File.read("#{__dir__}/../../input/in_day03.txt")
 
 # @param {String} input
-# @return {Array(String)}
-def format(input)
-  input.split
-end
-
-# @param {Array(String)} rucksacks
 # @return {Integer}
-def solution(rucksacks)
-  rucksacks.map! do |rucksack|
+def solution(input)
+  input.split.map! do |rucksack|
     first = rucksack[...rucksack.length / 2].chars.to_set
     second = rucksack[rucksack.length / 2..].chars.to_set
     item = first.intersection(second).first
@@ -22,4 +16,4 @@ def solution(rucksacks)
   end.sum
 end
 
-print solution(format(input))
+puts solution(input)

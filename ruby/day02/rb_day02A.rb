@@ -5,18 +5,12 @@ SCORES = %w[X Y Z].freeze
 WINS = ['A Y', 'C X', 'B Z'].freeze
 DRAWS = ['A X', 'B Y', 'C Z'].freeze
 
-input = File.read('../input.txt')
+input = File.read("#{__dir__}/../../input/in_day02.txt")
 
 # @param {String} input
-# @return {Array(String)}
-def format(input)
-  input.split("\n")
-end
-
-# @param {Array(String)} rounds
 # @return {Integer}
-def solution(rounds)
-  rounds.map! do |round|
+def solution(input)
+  input.split("\n").map! do |round|
     score = 1 + SCORES.index(round[2])
 
     if WINS.include? round
@@ -29,4 +23,4 @@ def solution(rounds)
   end.sum
 end
 
-print solution(format(input))
+puts solution(input)

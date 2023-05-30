@@ -1,17 +1,16 @@
 #!/bin/env python
 
-input = open('../input.txt').read()
+from os.path import dirname
 
-def format(input: str) -> list[str]:
-    return input.split()
+input = open(dirname(__file__) + '/../../input/in_day03.txt').read()
 
-def solution(rucksacks: list[str]) -> int:
+def solution(input: str) -> int:
     def _map(rucksack):
         first = set(rucksack[:len(rucksack) // 2])
         second = set(rucksack[len(rucksack) // 2:])
         item = first.intersection(second).pop()
         return ord(item) - (ord('a') - 1 if item > 'Z' else 38)
     
-    return sum(map(_map, rucksacks))
+    return sum(map(_map, input.split()))
 
-print(solution(format(input)))
+print(solution(input))

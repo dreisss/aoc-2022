@@ -1,11 +1,11 @@
 #!/bin/env python
 
-input = open('../input.txt').read()
+from os.path import dirname
 
-def format(input: str) -> list[str]:
-    return input.split()
+input = open(dirname(__file__) + '/../../input/in_day03.txt').read()
 
-def solution(rucksacks:list[str]) -> int:
+def solution(input: str) -> int:
+    rucksacks = input.split()
     priorities = []
     
     for i in range(0, len(rucksacks) - 1, 3):
@@ -17,4 +17,4 @@ def solution(rucksacks:list[str]) -> int:
     
     return sum(priorities)
 
-print(solution(format(input)))
+print(solution(input))

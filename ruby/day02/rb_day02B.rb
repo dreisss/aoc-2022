@@ -8,18 +8,12 @@ DRAWS = ['A A', 'B B', 'C C'].freeze
 TO_LOSE = %w[C A B].freeze
 TO_WIN = %w[B C A].freeze
 
-input = File.read('../input.txt')
+input = File.read("#{__dir__}/../../input/in_day02.txt")
 
 # @param {String} input
-# @return {Array(String)}
-def format(input)
-  input.split("\n")
-end
-
-# @param {Array(String)} rounds
 # @return {Integer}
-def solution(rounds)
-  rounds.map! do |round|
+def solution(input)
+  input.split("\n").map! do |round|
     cases = [TO_LOSE[SCORES.index round[0]], round[0], TO_WIN[SCORES.index round[0]]]
     round[2] = cases[CASES.index round[2]]
     score = 1 + SCORES.index(round[2])
@@ -34,4 +28,4 @@ def solution(rounds)
   end.sum
 end
 
-print solution(format(input))
+puts solution(input)

@@ -3,17 +3,12 @@
 
 require 'set'
 
-input = File.read('../input.txt')
+input = File.read("#{__dir__}/../../input/in_day03.txt")
 
 # @param {String} input
-# @return {Array(String)}
-def format(input)
-  input.split
-end
-
-# @param {Array(String)} rucksacks
 # @return {Integer}
-def solution(rucksacks)
+def solution(input)
+  rucksacks = input.split
   priorities = []
   (0...rucksacks.length).step(3) do |i|
     first = rucksacks[i].chars.to_set
@@ -25,4 +20,4 @@ def solution(rucksacks)
   priorities.sum
 end
 
-print solution(format(input))
+puts solution(input)

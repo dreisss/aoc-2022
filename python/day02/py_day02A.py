@@ -1,15 +1,15 @@
 #!/bin/env python
 
+from os.path import dirname
+
+input = open(dirname(__file__) + '/../../input/in_day02.txt').read()
+
 SCORES = ['X', 'Y', 'Z']
 WINS = ['A Y', 'C X', 'B Z']
 DRAWS = ['A X', 'B Y', 'C Z']
 
-input = open('../input.txt').read()
 
-def format(input: str) -> list[str]:
-    return input.split('\n')
-
-def solution(rounds: list[str]) -> int:
+def solution(input: str) -> int:
     def _map(round):
         score = 1 + SCORES.index(round[2])
 
@@ -20,6 +20,6 @@ def solution(rounds: list[str]) -> int:
 
         return score
         
-    return sum(map(_map, rounds))
+    return sum(map(_map, input.split('\n')))
 
-print(solution(format(input)))
+print(solution(input))
