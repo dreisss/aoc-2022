@@ -1,4 +1,4 @@
-# [**_`Advent of Code: 2022`_**](#advent-of-code-2022)
+[<img height="50px" src=".github/assets/logo.svg" />](https://adventofcode.com/)
 
 Solutions to Advent of Code 2022 event.
 
